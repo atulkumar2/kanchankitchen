@@ -107,6 +107,8 @@
     .order-step a { color: var(--maroon); text-decoration: none; font-weight: 600; }
     .order-step a:hover { text-decoration: underline; }
     .order-sep { width: 1px; background: rgba(200,149,42,0.3); align-self: stretch; }
+    .step-number { font-size: 0.7rem; color: var(--text-light); }
+    .footer-contact-text { font-size: 0.72rem; color: var(--text-light); margin-top: 3px; display: none; }
     /* Footer contact pill links */
     .footer-contact-links { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 3px; }
     .footer-contact-links a { font-size: 0.74rem; color: var(--maroon); text-decoration: none; border: 1px solid rgba(123,30,43,0.3); border-radius: 20px; padding: 2px 10px; }
@@ -126,6 +128,9 @@
       .page { width: 210mm; min-height: 297mm; padding: 20mm; box-shadow: none; margin: 0 auto; }
       .top-nav { display: none; }
       a { color: inherit !important; text-decoration: none; }
+      /* Show plain text contact info in print, hide pill buttons */
+      .footer-contact-links { display: none !important; }
+      .footer-contact-text { display: block !important; }
     }
     @media screen and (max-width: 640px) {
       body { padding: 12px 6px; }
@@ -249,7 +254,8 @@
       <div class="order-step">
         <span class="step-icon">💬</span>
         <strong>WhatsApp ಮಾಡಿ</strong>
-        <a href="https://wa.me/918861266264?text=ನಮಸ್ಕಾರ+ಕಾಂಚನ+ಅವರೇ%2C+ನಾನು+ಆರ್ಡರ್+ಮಾಡಲು+ಬಯಸುತ್ತೇನೆ.+ದಯವಿಟ್ಟು+ಲಭ್ಯತೆ+ಮತ್ತು+ಡೆಲಿವರಿ+ಶುಲ್ಕ+ತಿಳಿಸಿ." target="_blank" rel="noopener">WhatsApp ಮೆಸೆಜ್</a>
+        <a href="https://wa.me/918861266264?text=ನಮಸ್ಕಾರ+ಕಾಂಚನ+ಅವರೇ%2C+ನಾನು+ಆರ್ಡರ್+ಮಾಡಲು+ಬಯಸುತ್ತೇನೆ.+ದಯವಿಟ್ಟು+ಲಭ್ಯತೆ+ಮತ್ತು+ಡೆಲಿವರಿ+ಶುಲ್ಕ+ತಿಳಿಸಿ." target="_blank" rel="noopener">WhatsApp ಮೆಸೆಜ್</a><br/>
+        <span class="step-number">+91 88612 66264</span>
       </div>
       <div class="order-sep" aria-hidden="true"></div>
       <div class="order-step">
@@ -278,6 +284,7 @@
         <a href="https://kanchankitchen.vercel.app" target="_blank" rel="noopener">🌐 ವೆಬ್ಸೈಟ್</a>
         <a href="https://maps.google.com/?q=Deverachikkanahalli,+Bengaluru+560076" target="_blank" rel="noopener">📍 ಮ್ಯಾಪ್ಸ್</a>
       </div>
+      <p class="footer-contact-text">📞 +91 88612 66264 &nbsp;|&nbsp; 🌐 kanchankitchen.vercel.app</p>
     </div>
     <p class="footer-tagline">❝ ಪ್ರೀತಿಯಿಂದ ಮಾಡಿದ, ಸಂಪ್ರದಾಯದೊಂದಿಗೆ ಬಡಿಸಿದ ❞</p>
   </footer>
