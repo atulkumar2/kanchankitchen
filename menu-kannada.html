@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ಕಾಂಚನ ತಿವಾರಿ – ಶುದ್ಧ ಮನೆಯ ಅಡುಗೆ</title>
+  <style>
+    :root {
+      --maroon: #7B1E2B; --maroon-dark: #5A1420;
+      --gold: #C8952A; --gold-light: #E8B84B;
+      --cream: #FFF8EE; --cream-dark: #F5EADB;
+      --text: #2C0F12; --text-light: #5C3A3A; --border: #C8952A;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Noto Sans Kannada', Kannada, Georgia, serif;
+      background: #EDE0CE; color: var(--text);
+      min-height: 100vh; display: flex;
+      justify-content: center; align-items: flex-start; padding: 24px 16px;
+    }
+    .page {
+      width: 210mm; min-height: 297mm; background: var(--cream);
+      padding: 20mm; position: relative;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.22); overflow: hidden;
+    }
+    .page::before, .page::after {
+      content: ''; position: absolute; inset: 8mm;
+      pointer-events: none; border: 2px solid var(--gold); border-radius: 2px;
+    }
+    .page::after { inset: 11mm; border: 1px solid var(--gold-light); opacity: 0.55; }
+    .corner-decor { position: absolute; width: 12mm; height: 12mm; pointer-events: none; }
+    .corner-decor::before, .corner-decor::after {
+      content: ''; position: absolute; width: 8mm; height: 8mm;
+      border: 2px solid var(--gold); border-radius: 50%;
+    }
+    .corner-decor::before { top: 0; left: 0; }
+    .corner-decor::after { bottom: 0; right: 0; transform: rotate(45deg); border-radius: 2px; width: 5mm; height: 5mm; }
+    .corner-tl { top: 5mm; left: 5mm; }
+    .corner-tr { top: 5mm; right: 5mm; transform: scaleX(-1); }
+    .corner-bl { bottom: 5mm; left: 5mm; transform: scaleY(-1); }
+    .corner-br { bottom: 5mm; right: 5mm; transform: scale(-1); }
+    .strip-h, .strip-v {
+      position: absolute;
+      background-image: repeating-linear-gradient(90deg, transparent 0, transparent 6px, var(--gold) 6px, var(--gold) 7px, transparent 7px, transparent 12px);
+      opacity: 0.45;
+    }
+    .strip-h { height: 4px; left: 18mm; right: 18mm; }
+    .strip-h.top { top: 9.5mm; } .strip-h.bottom { bottom: 9.5mm; }
+    .strip-v { width: 4px; top: 18mm; bottom: 18mm; background-image: repeating-linear-gradient(180deg, transparent 0, transparent 6px, var(--gold) 6px, var(--gold) 7px, transparent 7px, transparent 12px); }
+    .strip-v.left { left: 9.5mm; } .strip-v.right { right: 9.5mm; }
+
+    /* Back & Lang buttons */
+    .top-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4mm; }
+    .btn-back, .btn-lang {
+      font-size: 0.7rem; padding: 4px 10px; border-radius: 3px; cursor: pointer; text-decoration: none;
+      border: 1.5px solid var(--maroon); font-family: inherit;
+    }
+    .btn-back { background: transparent; color: var(--maroon); }
+    .btn-back:hover { background: var(--maroon); color: var(--cream); }
+    .btn-lang { background: var(--maroon); color: var(--gold-light); border-color: var(--maroon); }
+    .btn-lang:hover { background: var(--maroon-dark); }
+
+    /* Header */
+    header { text-align: center; padding-bottom: 6mm; border-bottom: 2px solid var(--border); }
+    .header-ornament { display: block; font-size: 1.1rem; color: var(--gold); letter-spacing: 0.4em; margin-bottom: 4px; }
+    header h1 { font-size: 1.9rem; color: var(--maroon-dark); letter-spacing: 0.04em; line-height: 1.3; text-transform: none; }
+    header .tagline { margin-top: 5px; font-style: italic; font-size: 0.9rem; color: var(--gold); letter-spacing: 0.08em; }
+    .divider { display: flex; align-items: center; gap: 8px; margin: 4mm 0; color: var(--gold); }
+    .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+
+    /* Menu grid */
+    .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; margin-top: 3mm; }
+    .section-sweets { grid-column: 1 / -1; }
+    .menu-section { border: 1.5px solid var(--border); border-radius: 4px; background: var(--cream-dark); overflow: hidden; }
+    .menu-section::before { content: ''; display: block; height: 4px; background: linear-gradient(90deg, var(--maroon), var(--gold), var(--maroon)); }
+    .section-title { background: var(--maroon); color: var(--gold-light); text-align: center; padding: 4px 0; font-size: 0.82rem; letter-spacing: 0.12em; }
+    .section-items { list-style: none; padding: 5px 10px 8px; }
+    .section-items li { display: flex; justify-content: space-between; align-items: baseline; padding: 5.5px 0; border-bottom: 1px dashed rgba(200,149,42,0.35); font-size: 0.82rem; color: var(--text-light); gap: 6px; }
+    .section-items li:last-child { border-bottom: none; }
+    .item-name { flex: 1; color: var(--text); font-weight: 400; }
+    .item-name a { color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(123,30,43,0.4); }
+    .item-name a:hover { color: var(--maroon); border-bottom-color: var(--maroon); }
+    .item-weight { color: var(--text-light); font-style: italic; font-size: 0.76rem; white-space: nowrap; }
+    .item-price { font-weight: bold; color: var(--maroon); white-space: nowrap; font-size: 0.85rem; }
+
+    /* Delivery note */
+    .delivery-note { text-align: center; font-size: 0.7rem; color: var(--text-light); font-style: italic; margin-top: 3mm; }
+
+    /* Gallery */
+    .gallery-section { margin-top: 5mm; }
+    .gallery-heading { text-align: center; font-size: 0.78rem; letter-spacing: 0.15em; color: var(--maroon); margin-bottom: 3mm; display: flex; align-items: center; gap: 8px; }
+    .gallery-heading::before, .gallery-heading::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4mm; overflow: hidden; }
+    .gallery-item { display: flex; flex-direction: column; align-items: center; gap: 3px; text-align: center; }
+    .gallery-item img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px; border: 1.5px solid var(--gold); box-shadow: 0 2px 6px rgba(0,0,0,0.12); display: block; }
+    .g-name { font-size: 0.6rem; color: var(--text); line-height: 1.3; font-weight: 600; }
+    .g-price { font-size: 0.6rem; color: var(--maroon); font-weight: bold; }
+
+    /* Footer */
+    .footer-divider { margin: 6mm 0 4mm; border: none; border-top: 2px solid var(--border); }
+    footer { text-align: center; }
+    .footer-brand { font-size: 0.78rem; letter-spacing: 0.1em; color: var(--maroon-dark); font-weight: bold; text-transform: uppercase; margin-bottom: 4px; }
+    .footer-info { font-size: 0.76rem; color: var(--text-light); line-height: 1.7; }
+    .footer-info a { color: var(--maroon); text-decoration: none; }
+    .footer-tagline { margin-top: 6px; font-style: italic; font-size: 0.72rem; color: var(--gold); letter-spacing: 0.08em; }
+
+    @media print {
+      @page { size: A4 portrait; margin: 0; }
+      body { background: white; padding: 0; display: block; }
+      .page { width: 210mm; min-height: 297mm; padding: 20mm; box-shadow: none; margin: 0 auto; }
+      .top-nav { display: none; }
+      a { color: inherit !important; text-decoration: none; }
+    }
+    @media screen and (max-width: 640px) {
+      body { padding: 12px 6px; }
+      .page { width: 100%; min-height: unset; padding: 14mm 10mm; overflow-x: hidden; }
+      .page::before { inset: 4mm; } .page::after { inset: 6.5mm; }
+      header h1 { font-size: 1.4rem; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .section-sweets { grid-column: 1; }
+      .gallery-grid { grid-template-columns: repeat(4, 1fr); gap: 2.5mm; }
+    }
+    @media screen and (max-width: 380px) {
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="corner-decor corner-tl" aria-hidden="true"></div>
+  <div class="corner-decor corner-tr" aria-hidden="true"></div>
+  <div class="corner-decor corner-bl" aria-hidden="true"></div>
+  <div class="corner-decor corner-br" aria-hidden="true"></div>
+  <div class="strip-h top" aria-hidden="true"></div>
+  <div class="strip-h bottom" aria-hidden="true"></div>
+  <div class="strip-v left" aria-hidden="true"></div>
+  <div class="strip-v right" aria-hidden="true"></div>
+
+  <nav class="top-nav">
+    <a href="index.html" class="btn-back">← ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ನೋಡಿ</a>
+    <a href="index.html" class="btn-lang">🇮🇳 English Menu</a>
+  </nav>
+
+  <header>
+    <span class="header-ornament">❖ ❖ ❖</span>
+    <h1>ಕಾಂಚನ್ ಅಡುಗೆಮನೆ</h1>
+    <p class="tagline">ಶುದ್ಧ ಮನೆಯ ಅಡುಗೆ &nbsp;|&nbsp; ತಾಜಾ ತಯಾರಿ</p>
+  </header>
+
+  <div class="divider" aria-hidden="true"><span>✦</span></div>
+
+  <main>
+    <div class="menu-grid">
+
+      <!-- ಸಿಹಿ ತಿಂಡಿಗಳು -->
+      <section class="menu-section section-sweets" aria-labelledby="sec-sweets">
+        <div class="section-title" id="sec-sweets">🍮 &nbsp; ಸಿಹಿ ತಿಂಡಿಗಳು</div>
+        <ul class="section-items">
+          <li>
+            <span class="item-name"><a href="alasi-laddus.html">ಆಲಸಿ ಲಡ್ಡು</a></span>
+            <span class="item-weight">1 ಕೆಜಿ</span>
+            <span class="item-price">₹ 400</span>
+          </li>
+          <li>
+            <span class="item-name"><a href="mawa-gujiya.html">ಮಾವಾ ಗುಜಿಯಾ</a></span>
+            <span class="item-weight">500 ಗ್ರಾಂ</span>
+            <span class="item-price">₹ 500</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ಉಪ್ಪಿನಕಾಯಿ -->
+      <section class="menu-section" aria-labelledby="sec-pickle">
+        <div class="section-title" id="sec-pickle">🫙 &nbsp; ಉಪ್ಪಿನಕಾಯಿ</div>
+        <ul class="section-items">
+          <li>
+            <span class="item-name"><a href="amla-pickle.html">ಆಮ್ಲಾ ಉಪ್ಪಿನಕಾಯಿ</a></span>
+            <span class="item-weight">500 ಗ್ರಾಂ</span>
+            <span class="item-price">₹ 300</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ತಿಂಡಿಗಳು -->
+      <section class="menu-section" aria-labelledby="sec-snacks">
+        <div class="section-title" id="sec-snacks">🥜 &nbsp; ತಿಂಡಿಗಳು</div>
+        <ul class="section-items">
+          <li>
+            <span class="item-name"><a href="navratna-mixture.html">ನವರತ್ನ ಮಿಶ್ರಣ</a></span>
+            <span class="item-weight">100 ಗ್ರಾಂ</span>
+            <span class="item-price">₹ 60</span>
+          </li>
+          <li>
+            <span class="item-name"><a href="moong-dal-mixture.html">ಹೆಸರುಬೇಳೆ ಮಿಶ್ರಣ</a></span>
+            <span class="item-weight">100 ಗ್ರಾಂ</span>
+            <span class="item-price">₹ 45</span>
+          </li>
+          <li>
+            <span class="item-name"><a href="namak-para.html">ನಮಕ್ ಪಾರಾ</a></span>
+            <span class="item-weight">200 ಗ್ರಾಂ</span>
+            <span class="item-price">₹ 65</span>
+          </li>
+          <li>
+            <span class="item-name"><a href="shakkarpara.html">ಶಕ್ಕರ್ ಪಾರಾ</a></span>
+            <span class="item-weight">200 ಗ್ರಾಂ</span>
+            <span class="item-price">₹ 75</span>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+  </main>
+
+  <p class="delivery-note">* ಸ್ಥಳಕ್ಕೆ ಅನುಗುಣವಾಗಿ ಡೆಲಿವರಿ ಶುಲ್ಕ ಹೆಚ್ಚುವರಿ</p>
+
+  <section class="gallery-section" aria-label="ಉತ್ಪನ್ನಗಳ ಫೋಟೋ">
+    <div class="gallery-heading">✦ &nbsp; ನಮ್ಮ ಉತ್ಪನ್ನಗಳು &nbsp; ✦</div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="images/Alasi_laddus.jpg" alt="ಆಲಸಿ ಲಡ್ಡು" /><span class="g-name">ಆಲಸಿ ಲಡ್ಡು</span><span class="g-price">₹ 400/ಕೆಜಿ</span></div>
+      <div class="gallery-item"><img src="images/mava_gujiya.jpg" alt="ಮಾವಾ ಗುಜಿಯಾ" /><span class="g-name">ಮಾವಾ ಗುಜಿಯಾ</span><span class="g-price">₹ 500/500ಗ್ರಾಂ</span></div>
+      <div class="gallery-item"><img src="images/Amla_pickle.jpg" alt="ಆಮ್ಲಾ ಉಪ್ಪಿನಕಾಯಿ" /><span class="g-name">ಆಮ್ಲಾ ಉಪ್ಪಿನಕಾಯಿ</span><span class="g-price">₹ 300/500ಗ್ರಾಂ</span></div>
+      <div class="gallery-item"><img src="images/navaratan_mixture.jpg" alt="ನವರತ್ನ ಮಿಶ್ರಣ" /><span class="g-name">ನವರತ್ನ ಮಿಶ್ರಣ</span><span class="g-price">₹ 60/100ಗ್ರಾಂ</span></div>
+      <div class="gallery-item"><img src="images/Moong_daal.jpg" alt="ಹೆಸರುಬೇಳೆ ಮಿಶ್ರಣ" /><span class="g-name">ಹೆಸರುಬೇಳೆ ಮಿಶ್ರಣ</span><span class="g-price">₹ 45/100ಗ್ರಾಂ</span></div>
+      <div class="gallery-item"><img src="images/namak_para.jpg" alt="ನಮಕ್ ಪಾರಾ" /><span class="g-name">ನಮಕ್ ಪಾರಾ</span><span class="g-price">₹ 65/200ಗ್ರಾಂ</span></div>
+      <div class="gallery-item"><img src="images/shakar_para.jpg" alt="ಶಕ್ಕರ್ ಪಾರಾ" /><span class="g-name">ಶಕ್ಕರ್ ಪಾರಾ</span><span class="g-price">₹ 75/200ಗ್ರಾಂ</span></div>
+    </div>
+  </section>
+
+  <hr class="footer-divider" />
+
+  <footer>
+    <p class="footer-brand">ಕಾಂಚನ ತಿವಾರಿ – ಮನೆಯ ಆಹಾರ</p>
+    <div class="footer-info">
+      <p>ವಿಜಯಾ ಬ್ಯಾಂಕ್ ಲೇಔಟ್ ಬಳಿ, ದೇವರಚಿಕ್ಕನಹಳ್ಳಿ, ಬೆಂಗಳೂರು – 560076</p>
+      <p>📞 <a href="tel:+918861266264">+91 88612 66264 (WhatsApp & Call)</a></p>
+      <p>🌐 <a href="https://kanchankitchen.vercel.app" target="_blank" rel="noopener">kanchankitchen.vercel.app</a></p>
+    </div>
+    <p class="footer-tagline">❝ ಪ್ರೀತಿಯಿಂದ ಮಾಡಿದ, ಸಂಪ್ರದಾಯದೊಂದಿಗೆ ಬಡಿಸಿದ ❞</p>
+  </footer>
+</div>
+</body>
+</html>

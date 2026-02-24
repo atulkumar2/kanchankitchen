@@ -342,6 +342,7 @@
         display: grid;
         grid-template-columns: repeat(7, 1fr);
         gap: 4mm;
+        overflow: hidden;
       }
       .gallery-item {
         display: flex;
@@ -369,6 +370,30 @@
         font-size: 0.6rem;
         color: var(--maroon);
         font-weight: bold;
+      }
+
+      /* Kannada button */
+      .kannada-btn-wrap { text-align: right; margin-bottom: 2mm; }
+      .btn-kannada {
+        display: inline-block; text-decoration: none; font-family: inherit;
+        font-size: 0.68rem; padding: 3px 12px; border-radius: 20px;
+        background: var(--maroon); color: var(--gold-light);
+        border: 1px solid var(--gold); letter-spacing: 0.06em;
+        cursor: pointer; transition: background 0.2s;
+      }
+      .btn-kannada:hover { background: var(--maroon-dark); }
+
+      /* Item name links */
+      .item-name a {
+        color: inherit; text-decoration: none;
+        border-bottom: 1px dotted rgba(123,30,43,0.4);
+      }
+      .item-name a:hover { color: var(--maroon); border-bottom-color: var(--maroon); }
+
+      /* Delivery note */
+      .delivery-note {
+        text-align: center; font-size: 0.7rem; color: var(--text-light);
+        font-style: italic; margin-top: 3mm;
       }
 
       /* ============================================================
@@ -460,6 +485,7 @@
           width: 100%;
           min-height: unset;
           padding: 14mm 10mm;
+          overflow-x: hidden;
         }
         .page::before {
           inset: 4mm;
@@ -475,6 +501,20 @@
         }
         .section-sweets {
           grid-column: 1;
+        }
+        /* Gallery: 4 per row on mobile, wrapping */
+        .gallery-grid {
+          grid-template-columns: repeat(4, 1fr);
+          gap: 2.5mm;
+        }
+        .gallery-item .g-name,
+        .gallery-item .g-price {
+          font-size: 0.55rem;
+        }
+      }
+      @media screen and (max-width: 380px) {
+        .gallery-grid {
+          grid-template-columns: repeat(3, 1fr);
         }
       }
     </style>
@@ -498,6 +538,9 @@
         <p class="tagline">Pure Homemade &nbsp;|&nbsp; Freshly Prepared</p>
       </header>
 
+      <div class="kannada-btn-wrap">
+        <a href="menu-kannada.html" class="btn-kannada">🇮🇳 ಕನ್ನಡದಲ್ಲಿ ನೋಡಿ</a>
+      </div>
       <div class="divider" aria-hidden="true">
         <span class="divider-icon">✦</span>
       </div>
@@ -513,12 +556,12 @@
             <div class="section-title" id="sec-sweets">🍮 &nbsp; Sweets</div>
             <ul class="section-items">
               <li>
-                <span class="item-name">Alasi Laddus</span>
+                <span class="item-name"><a href="alasi-laddus.html">Alasi Laddus</a></span>
                 <span class="item-weight">1 kg</span>
                 <span class="item-price">₹ 400</span>
               </li>
               <li>
-                <span class="item-name">Mawa Gujiya</span>
+                <span class="item-name"><a href="mawa-gujiya.html">Mawa Gujiya</a></span>
                 <span class="item-weight">500 g</span>
                 <span class="item-price">₹ 500</span>
               </li>
@@ -530,7 +573,7 @@
             <div class="section-title" id="sec-pickle">🫙 &nbsp; Pickle</div>
             <ul class="section-items">
               <li>
-                <span class="item-name">Amla Pickle</span>
+                <span class="item-name"><a href="amla-pickle.html">Amla Pickle</a></span>
                 <span class="item-weight">500 g</span>
                 <span class="item-price">₹ 300</span>
               </li>
@@ -542,22 +585,22 @@
             <div class="section-title" id="sec-snacks">🥜 &nbsp; Snacks</div>
             <ul class="section-items">
               <li>
-                <span class="item-name">Navratan Mixture</span>
+                <span class="item-name"><a href="navratna-mixture.html">Navratna Mixture</a></span>
                 <span class="item-weight">100 g</span>
                 <span class="item-price">₹ 60</span>
               </li>
               <li>
-                <span class="item-name">Moong Dal Mixture</span>
+                <span class="item-name"><a href="moong-dal-mixture.html">Moong Dal Mixture</a></span>
                 <span class="item-weight">100 g</span>
                 <span class="item-price">₹ 45</span>
               </li>
               <li>
-                <span class="item-name">Namak Para</span>
+                <span class="item-name"><a href="namak-para.html">Namak Para</a></span>
                 <span class="item-weight">200 g</span>
                 <span class="item-price">₹ 65</span>
               </li>
               <li>
-                <span class="item-name">Shakkarpara</span>
+                <span class="item-name"><a href="shakkarpara.html">Shakkarpara</a></span>
                 <span class="item-weight">200 g</span>
                 <span class="item-price">₹ 75</span>
               </li>
@@ -566,6 +609,8 @@
         </div>
         <!-- /.menu-grid -->
       </main>
+
+      <p class="delivery-note">* Delivery charges extra depending on location</p>
 
       <!-- ===== PHOTO GALLERY ===== -->
       <section class="gallery-section" aria-label="Product photos">
@@ -626,7 +671,8 @@
           <p>
             Near Vijaya Bank Layout, Deverachikkanahalli, Bengaluru – 560076
           </p>
-          <p>📞 <a href="tel:+918861266264">+91 88612 66264</a></p>
+          <p>📞 <a href="tel:+918861266264">+91 88612 66264 (WhatsApp & Call)</a></p>
+          <p>🌐 <a href="https://kanchankitchen.vercel.app" target="_blank" rel="noopener">kanchankitchen.vercel.app</a></p>
         </div>
         <p class="footer-tagline">❝ Made with love, served with tradition ❞</p>
       </footer>
