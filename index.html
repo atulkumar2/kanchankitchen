@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kanchan Tiwari – Pure Homemade | Freshly Prepared</title>
+    <style>
+      /* ============================================================
+       DESIGN TOKENS
+    ============================================================ */
+      :root {
+        --maroon: #7b1e2b;
+        --maroon-dark: #5a1420;
+        --gold: #c8952a;
+        --gold-light: #e8b84b;
+        --cream: #fff8ee;
+        --cream-dark: #f5eadb;
+        --text: #2c0f12;
+        --text-light: #5c3a3a;
+        --border: #c8952a;
+      }
+
+      /* ============================================================
+       RESET & BASE
+    ============================================================ */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Georgia, "Times New Roman", serif;
+        background: #ede0ce;
+        color: var(--text);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 24px 16px;
+      }
+
+      /* ============================================================
+       A4 PAGE SHELL
+    ============================================================ */
+      .page {
+        width: 210mm;
+        min-height: 297mm;
+        background: var(--cream);
+        padding: 20mm;
+        position: relative;
+        box-shadow: 0 4px 32px rgba(0, 0, 0, 0.22);
+        overflow: hidden;
+      }
+
+      /* ============================================================
+       CSS-ONLY DECORATIVE MOTIF BORDER
+       (Repeating diamond-chain pattern via linear-gradient)
+    ============================================================ */
+      .page::before,
+      .page::after {
+        content: "";
+        position: absolute;
+        inset: 8mm;
+        pointer-events: none;
+        border: 2px solid var(--gold);
+        border-radius: 2px;
+      }
+      .page::after {
+        inset: 11mm;
+        border: 1px solid var(--gold-light);
+        opacity: 0.55;
+      }
+
+      /* Corner rosettes using box-shadow */
+      .corner-decor {
+        position: absolute;
+        width: 12mm;
+        height: 12mm;
+        pointer-events: none;
+      }
+      .corner-decor::before,
+      .corner-decor::after {
+        content: "";
+        position: absolute;
+        width: 8mm;
+        height: 8mm;
+        border: 2px solid var(--gold);
+        border-radius: 50%;
+      }
+      .corner-decor::before {
+        top: 0;
+        left: 0;
+      }
+      .corner-decor::after {
+        bottom: 0;
+        right: 0;
+        transform: rotate(45deg);
+        border-radius: 2px;
+        width: 5mm;
+        height: 5mm;
+      }
+
+      .corner-tl {
+        top: 5mm;
+        left: 5mm;
+      }
+      .corner-tr {
+        top: 5mm;
+        right: 5mm;
+        transform: scaleX(-1);
+      }
+      .corner-bl {
+        bottom: 5mm;
+        left: 5mm;
+        transform: scaleY(-1);
+      }
+      .corner-br {
+        bottom: 5mm;
+        right: 5mm;
+        transform: scale(-1);
+      }
+
+      /* Diamond-chain side strips */
+      .strip-h,
+      .strip-v {
+        position: absolute;
+        background-image: repeating-linear-gradient(
+          90deg,
+          transparent 0,
+          transparent 6px,
+          var(--gold) 6px,
+          var(--gold) 7px,
+          transparent 7px,
+          transparent 12px
+        );
+        opacity: 0.45;
+      }
+      .strip-h {
+        height: 4px;
+        left: 18mm;
+        right: 18mm;
+      }
+      .strip-h.top {
+        top: 9.5mm;
+      }
+      .strip-h.bottom {
+        bottom: 9.5mm;
+      }
+
+      .strip-v {
+        width: 4px;
+        top: 18mm;
+        bottom: 18mm;
+        background-image: repeating-linear-gradient(
+          180deg,
+          transparent 0,
+          transparent 6px,
+          var(--gold) 6px,
+          var(--gold) 7px,
+          transparent 7px,
+          transparent 12px
+        );
+      }
+      .strip-v.left {
+        left: 9.5mm;
+      }
+      .strip-v.right {
+        right: 9.5mm;
+      }
+
+      /* ============================================================
+       HEADER
+    ============================================================ */
+      header {
+        text-align: center;
+        padding-bottom: 6mm;
+        border-bottom: 2px solid var(--border);
+        position: relative;
+      }
+
+      .header-ornament {
+        display: block;
+        font-size: 1.1rem;
+        color: var(--gold);
+        letter-spacing: 0.4em;
+        margin-bottom: 4px;
+      }
+
+      header h1 {
+        font-size: 2rem;
+        color: var(--maroon-dark);
+        letter-spacing: 0.06em;
+        line-height: 1.2;
+        text-transform: uppercase;
+      }
+
+      header .tagline {
+        margin-top: 5px;
+        font-style: italic;
+        font-size: 0.95rem;
+        color: var(--gold);
+        letter-spacing: 0.12em;
+      }
+
+      .divider {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 5mm 0;
+        color: var(--gold);
+      }
+      .divider::before,
+      .divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+      }
+      .divider-icon {
+        font-size: 1.1rem;
+      }
+
+      /* ============================================================
+       MENU GRID
+    ============================================================ */
+      .menu-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5mm;
+        margin-top: 3mm;
+      }
+
+      /* Sweets spans full width */
+      .section-sweets {
+        grid-column: 1 / -1;
+      }
+
+      /* ============================================================
+       SECTION CARDS
+    ============================================================ */
+      .menu-section {
+        border: 1.5px solid var(--border);
+        border-radius: 4px;
+        background: var(--cream-dark);
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Top accent bar */
+      .menu-section::before {
+        content: "";
+        display: block;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--maroon),
+          var(--gold),
+          var(--maroon)
+        );
+      }
+
+      .section-title {
+        background: var(--maroon);
+        color: var(--gold-light);
+        text-align: center;
+        padding: 4px 0;
+        font-size: 0.82rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .section-items {
+        list-style: none;
+        padding: 5px 10px 8px;
+      }
+
+      .section-items li {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 5.5px 0;
+        border-bottom: 1px dashed rgba(200, 149, 42, 0.35);
+        font-size: 0.82rem;
+        color: var(--text-light);
+        gap: 6px;
+      }
+      .section-items li:last-child {
+        border-bottom: none;
+      }
+
+      .item-name {
+        flex: 1;
+        color: var(--text);
+        font-weight: 400;
+      }
+      .item-weight {
+        color: var(--text-light);
+        font-style: italic;
+        font-size: 0.76rem;
+        white-space: nowrap;
+      }
+      .item-price {
+        font-weight: bold;
+        color: var(--maroon);
+        white-space: nowrap;
+        font-size: 0.85rem;
+      }
+
+      /* ============================================================
+       PHOTO GALLERY
+    ============================================================ */
+      .gallery-section {
+        margin-top: 5mm;
+      }
+      .gallery-heading {
+        text-align: center;
+        font-size: 0.78rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--maroon);
+        margin-bottom: 3mm;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .gallery-heading::before,
+      .gallery-heading::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      }
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 4mm;
+      }
+      .gallery-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        text-align: center;
+      }
+      .gallery-item img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 4px;
+        border: 1.5px solid var(--gold);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        display: block;
+      }
+      .gallery-item .g-name {
+        font-size: 0.6rem;
+        color: var(--text);
+        line-height: 1.3;
+        font-weight: 600;
+      }
+      .gallery-item .g-price {
+        font-size: 0.6rem;
+        color: var(--maroon);
+        font-weight: bold;
+      }
+
+      /* ============================================================
+       DIVIDER BETWEEN MENU & FOOTER
+    ============================================================ */
+      .footer-divider {
+        margin: 6mm 0 4mm;
+        border: none;
+        border-top: 2px solid var(--border);
+      }
+
+      /* ============================================================
+       FOOTER
+    ============================================================ */
+      footer {
+        text-align: center;
+      }
+
+      footer .footer-brand {
+        font-size: 0.78rem;
+        letter-spacing: 0.1em;
+        color: var(--maroon-dark);
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+
+      footer .footer-info {
+        font-size: 0.76rem;
+        color: var(--text-light);
+        line-height: 1.7;
+      }
+
+      footer .footer-info a {
+        color: var(--maroon);
+        text-decoration: none;
+      }
+
+      footer .footer-tagline {
+        margin-top: 6px;
+        font-style: italic;
+        font-size: 0.72rem;
+        color: var(--gold);
+        letter-spacing: 0.08em;
+      }
+
+      /* ============================================================
+       PRINT STYLES
+    ============================================================ */
+      @media print {
+        @page {
+          size: A4 portrait;
+          margin: 0;
+        }
+
+        body {
+          background: white;
+          padding: 0;
+          display: block;
+        }
+
+        .page {
+          width: 210mm;
+          min-height: 297mm;
+          padding: 20mm;
+          box-shadow: none;
+          margin: 0 auto;
+          page-break-after: avoid;
+        }
+
+        .menu-section {
+          break-inside: avoid;
+        }
+
+        a {
+          color: inherit !important;
+          text-decoration: none;
+        }
+      }
+
+      /* ============================================================
+       RESPONSIVE – SCREEN SMALLER THAN A4
+    ============================================================ */
+      @media screen and (max-width: 640px) {
+        body {
+          padding: 12px 6px;
+        }
+        .page {
+          width: 100%;
+          min-height: unset;
+          padding: 14mm 10mm;
+        }
+        .page::before {
+          inset: 4mm;
+        }
+        .page::after {
+          inset: 6.5mm;
+        }
+        header h1 {
+          font-size: 1.5rem;
+        }
+        .menu-grid {
+          grid-template-columns: 1fr;
+        }
+        .section-sweets {
+          grid-column: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <!-- Decorative border elements -->
+      <div class="corner-decor corner-tl" aria-hidden="true"></div>
+      <div class="corner-decor corner-tr" aria-hidden="true"></div>
+      <div class="corner-decor corner-bl" aria-hidden="true"></div>
+      <div class="corner-decor corner-br" aria-hidden="true"></div>
+      <div class="strip-h top" aria-hidden="true"></div>
+      <div class="strip-h bottom" aria-hidden="true"></div>
+      <div class="strip-v left" aria-hidden="true"></div>
+      <div class="strip-v right" aria-hidden="true"></div>
+
+      <!-- ===== HEADER ===== -->
+      <header>
+        <span class="header-ornament">❖ ❖ ❖</span>
+        <h1>Kanchan's Kitchen</h1>
+        <p class="tagline">Pure Homemade &nbsp;|&nbsp; Freshly Prepared</p>
+      </header>
+
+      <div class="divider" aria-hidden="true">
+        <span class="divider-icon">✦</span>
+      </div>
+
+      <!-- ===== MENU ===== -->
+      <main>
+        <div class="menu-grid">
+          <!-- SWEETS – full width -->
+          <section
+            class="menu-section section-sweets"
+            aria-labelledby="sec-sweets"
+          >
+            <div class="section-title" id="sec-sweets">🍮 &nbsp; Sweets</div>
+            <ul class="section-items">
+              <li>
+                <span class="item-name">Alasi Laddus</span>
+                <span class="item-weight">1 kg</span>
+                <span class="item-price">₹ 400</span>
+              </li>
+              <li>
+                <span class="item-name">Mawa Gujiya</span>
+                <span class="item-weight">500 g</span>
+                <span class="item-price">₹ 500</span>
+              </li>
+            </ul>
+          </section>
+
+          <!-- PICKLE -->
+          <section class="menu-section" aria-labelledby="sec-pickle">
+            <div class="section-title" id="sec-pickle">🫙 &nbsp; Pickle</div>
+            <ul class="section-items">
+              <li>
+                <span class="item-name">Amla Pickle</span>
+                <span class="item-weight">500 g</span>
+                <span class="item-price">₹ 300</span>
+              </li>
+            </ul>
+          </section>
+
+          <!-- SNACKS -->
+          <section class="menu-section" aria-labelledby="sec-snacks">
+            <div class="section-title" id="sec-snacks">🥜 &nbsp; Snacks</div>
+            <ul class="section-items">
+              <li>
+                <span class="item-name">Navratan Mixture</span>
+                <span class="item-weight">100 g</span>
+                <span class="item-price">₹ 60</span>
+              </li>
+              <li>
+                <span class="item-name">Moong Dal Mixture</span>
+                <span class="item-weight">100 g</span>
+                <span class="item-price">₹ 45</span>
+              </li>
+              <li>
+                <span class="item-name">Namak Para</span>
+                <span class="item-weight">200 g</span>
+                <span class="item-price">₹ 65</span>
+              </li>
+              <li>
+                <span class="item-name">Shakkarpara</span>
+                <span class="item-weight">200 g</span>
+                <span class="item-price">₹ 75</span>
+              </li>
+            </ul>
+          </section>
+        </div>
+        <!-- /.menu-grid -->
+      </main>
+
+      <!-- ===== PHOTO GALLERY ===== -->
+      <section class="gallery-section" aria-label="Product photos">
+        <div class="gallery-heading">✦ &nbsp; Our Products &nbsp; ✦</div>
+        <div class="gallery-grid">
+
+          <div class="gallery-item">
+            <img src="images/Alasi_laddus.jpg" alt="Alasi Laddus" loading="lazy" />
+            <span class="g-name">Alasi Laddus</span>
+            <span class="g-price">₹ 400 / kg</span>
+          </div>
+
+          <div class="gallery-item">
+            <img src="images/mava_gujiya.jpg" alt="Mawa Gujiya" loading="lazy" />
+            <span class="g-name">Mawa Gujiya</span>
+            <span class="g-price">₹ 500 / 500g</span>
+          </div>
+
+          <div class="gallery-item">
+            <img src="images/Amla_pickle.jpg" alt="Amla Pickle" loading="lazy" />
+            <span class="g-name">Amla Pickle</span>
+            <span class="g-price">₹ 300 / 500g</span>
+          </div>
+
+          <div class="gallery-item">
+            <img src="images/navaratan_mixture.jpg" alt="Navratna Mixture" loading="lazy" />
+            <span class="g-name">Navratna Mixture</span>
+            <span class="g-price">₹ 60 / 100g</span>
+          </div>
+
+          <div class="gallery-item">
+            <img src="images/Moong_daal.jpg" alt="Moong Dal Mixture" loading="lazy" />
+            <span class="g-name">Moong Dal Mix</span>
+            <span class="g-price">₹ 45 / 100g</span>
+          </div>
+
+          <div class="gallery-item">
+            <img src="images/namak_para.jpg" alt="Namak Para" loading="lazy" />
+            <span class="g-name">Namak Para</span>
+            <span class="g-price">₹ 65 / 200g</span>
+          </div>
+
+          <div class="gallery-item">
+            <img src="images/shakar_para.jpg" alt="Shakkarpara" loading="lazy" />
+            <span class="g-name">Shakkarpara</span>
+            <span class="g-price">₹ 75 / 200g</span>
+          </div>
+
+        </div>
+      </section>
+
+      <hr class="footer-divider" />
+
+      <!-- ===== FOOTER ===== -->
+      <footer>
+        <p class="footer-brand">Kanchan Tiwari – Home Food</p>
+        <div class="footer-info">
+          <p>
+            Near Vijaya Bank Layout, Deverachikkanahalli, Bengaluru – 560076
+          </p>
+          <p>📞 <a href="tel:+918861266264">+91 88612 66264</a></p>
+        </div>
+        <p class="footer-tagline">❝ Made with love, served with tradition ❞</p>
+      </footer>
+    </div>
+    <!-- /.page -->
+  </body>
+</html>
