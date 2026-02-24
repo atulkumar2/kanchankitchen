@@ -96,6 +96,22 @@
     .g-name { font-size: 0.6rem; color: var(--text); line-height: 1.3; font-weight: 600; }
     .g-price { font-size: 0.6rem; color: var(--maroon); font-weight: bold; }
 
+    /* How to Order block */
+    .order-block { margin: 5mm 0 0; border: 1.5px solid var(--border); border-radius: 4px; overflow: hidden; background: var(--cream-dark); }
+    .order-block::before { content: ''; display: block; height: 4px; background: linear-gradient(90deg, var(--maroon), var(--gold), var(--maroon)); }
+    .order-block-title { background: var(--maroon); color: var(--gold-light); text-align: center; padding: 4px 0; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; }
+    .order-steps { display: flex; justify-content: space-around; padding: 5px 10px 8px; gap: 4mm; }
+    .order-step { flex: 1; text-align: center; font-size: 0.75rem; color: var(--text-light); line-height: 1.55; }
+    .order-step .step-icon { font-size: 1.1rem; display: block; margin-bottom: 3px; }
+    .order-step strong { display: block; color: var(--text); font-size: 0.78rem; margin-bottom: 2px; }
+    .order-step a { color: var(--maroon); text-decoration: none; font-weight: 600; }
+    .order-step a:hover { text-decoration: underline; }
+    .order-sep { width: 1px; background: rgba(200,149,42,0.3); align-self: stretch; }
+    /* Footer contact pill links */
+    .footer-contact-links { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 3px; }
+    .footer-contact-links a { font-size: 0.74rem; color: var(--maroon); text-decoration: none; border: 1px solid rgba(123,30,43,0.3); border-radius: 20px; padding: 2px 10px; }
+    .footer-contact-links a:hover { background: var(--maroon); color: var(--cream); }
+
     /* Footer */
     .footer-divider { margin: 6mm 0 4mm; border: none; border-top: 2px solid var(--border); }
     footer { text-align: center; }
@@ -226,14 +242,42 @@
     </div>
   </section>
 
+  <!-- ===== ಹೇಗೆ ಆರ್ಡರ್ ಮಾಡಬೇಕು ===== -->
+  <div class="order-block" role="complementary" aria-label="ಹೇಗೆ ಆರ್ಡರ್ ಮಾಡಬೇಕು">
+    <div class="order-block-title">🛒 &nbsp; ಹೇಗೆ ಆರ್ಡರ್ ಮಾಡಬೇಕು</div>
+    <div class="order-steps">
+      <div class="order-step">
+        <span class="step-icon">💬</span>
+        <strong>WhatsApp ಮಾಡಿ</strong>
+        <a href="https://wa.me/918861266264?text=ನಮಸ್ಕಾರ+ಕಾಂಚನ+ಅವರೇ%2C+ನಾನು+ಆರ್ಡರ್+ಮಾಡಲು+ಬಯಸುತ್ತೇನೆ.+ದಯವಿಟ್ಟು+ಲಭ್ಯತೆ+ಮತ್ತು+ಡೆಲಿವರಿ+ಶುಲ್ಕ+ತಿಳಿಸಿ." target="_blank" rel="noopener">WhatsApp ಮೆಸೆಜ್</a>
+      </div>
+      <div class="order-sep" aria-hidden="true"></div>
+      <div class="order-step">
+        <span class="step-icon">📞</span>
+        <strong>ಫೋನ್ ಮಾಡಿ</strong>
+        <a href="tel:+918861266264">+91 88612 66264</a>
+      </div>
+      <div class="order-sep" aria-hidden="true"></div>
+      <div class="order-step">
+        <span class="step-icon">🕐</span>
+        <strong>ತಯಾರಿ ಸಮಯ</strong>
+        ತಾಜಾ ತಯಾರಿಸುತ್ತೇವೆ<br />ದೊಡ್ಡ ಆರ್ಡರ್ಗೆ<br />24–48 ಗಂಟೆ ಮುನ್ನುಚೂಱಿಕೆ ಆವಶ್ಯಕವಿದೆ
+      </div>
+    </div>
+  </div>
+
   <hr class="footer-divider" />
 
   <footer>
     <p class="footer-brand">ಕಾಂಚನ ತಿವಾರಿ – ಮನೆಯ ಆಹಾರ</p>
     <div class="footer-info">
-      <p>ವಿಜಯಾ ಬ್ಯಾಂಕ್ ಲೇಔಟ್ ಬಳಿ, ದೇವರಚಿಕ್ಕನಹಳ್ಳಿ, ಬೆಂಗಳೂರು – 560076</p>
-      <p>📞 <a href="tel:+918861266264">+91 88612 66264 (WhatsApp & Call)</a></p>
-      <p>🌐 <a href="https://kanchankitchen.vercel.app" target="_blank" rel="noopener">kanchankitchen.vercel.app</a></p>
+      <p><a href="https://maps.google.com/?q=Deverachikkanahalli,+Bengaluru+560076" target="_blank" rel="noopener">📍 ವಿಜಯಾ ಬ್ಯಾಂಕ್ ಲೇಔಟ್ ಬಳಿ, ದೇವರಚಿಕ್ಕನಹಳ್ಳಿ, ಬೆಂಗಳೂರು – 560076</a></p>
+      <div class="footer-contact-links">
+        <a href="tel:+918861266264">📞 ಫೋನ್</a>
+        <a href="https://wa.me/918861266264" target="_blank" rel="noopener">💬 WhatsApp</a>
+        <a href="https://kanchankitchen.vercel.app" target="_blank" rel="noopener">🌐 ವೆಬ್ಸೈಟ್</a>
+        <a href="https://maps.google.com/?q=Deverachikkanahalli,+Bengaluru+560076" target="_blank" rel="noopener">📍 ಮ್ಯಾಪ್ಸ್</a>
+      </div>
     </div>
     <p class="footer-tagline">❝ ಪ್ರೀತಿಯಿಂದ ಮಾಡಿದ, ಸಂಪ್ರದಾಯದೊಂದಿಗೆ ಬಡಿಸಿದ ❞</p>
   </footer>

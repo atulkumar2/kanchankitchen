@@ -3,7 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kanchan Tiwari – Pure Homemade | Freshly Prepared</title>
+    <title>Kanchan's Kitchen | Homemade Snacks &amp; Sweets in Deverachikkanahalli, Bengaluru</title>
+    <meta name="description" content="Order fresh homemade Alasi Laddus, Mawa Gujiya, Amla Pickle, Navratna Mixture &amp; more from Kanchan Tiwari's kitchen in Deverachikkanahalli, Bengaluru. Call or WhatsApp +91 88612 66264." />
+    <!-- Open Graph / WhatsApp sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kanchankitchen.vercel.app/" />
+    <meta property="og:title" content="Kanchan's Kitchen | Homemade Snacks &amp; Sweets – Bengaluru" />
+    <meta property="og:description" content="Pure homemade Alasi Laddus, Mawa Gujiya, Amla Pickle, Navratna Mixture &amp; more. Fresh on order. Call / WhatsApp +91 88612 66264." />
+    <meta property="og:image" content="https://kanchankitchen.vercel.app/images/Alasi_laddus.jpg" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="800" />
+    <meta property="og:locale" content="en_IN" />
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Kanchan's Kitchen | Homemade Sweets &amp; Snacks – Bengaluru" />
+    <meta name="twitter:description" content="Pure homemade Alasi Laddus, Mawa Gujiya, Amla Pickle &amp; more. Fresh on order. WhatsApp +91 88612 66264." />
+    <meta name="twitter:image" content="https://kanchankitchen.vercel.app/images/Alasi_laddus.jpg" />
     <style>
       /* ============================================================
        DESIGN TOKENS
@@ -441,6 +456,59 @@
       }
 
       /* ============================================================
+       HOW TO ORDER BLOCK
+    ============================================================ */
+      .order-block {
+        margin: 5mm 0 0;
+        border: 1.5px solid var(--border);
+        border-radius: 4px;
+        overflow: hidden;
+        background: var(--cream-dark);
+      }
+      .order-block::before {
+        content: '';
+        display: block;
+        height: 4px;
+        background: linear-gradient(90deg, var(--maroon), var(--gold), var(--maroon));
+      }
+      .order-block-title {
+        background: var(--maroon);
+        color: var(--gold-light);
+        text-align: center;
+        padding: 4px 0;
+        font-size: 0.78rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+      .order-steps {
+        display: flex;
+        justify-content: space-around;
+        padding: 5px 10px 8px;
+        gap: 4mm;
+      }
+      .order-step {
+        flex: 1;
+        text-align: center;
+        font-size: 0.75rem;
+        color: var(--text-light);
+        line-height: 1.55;
+      }
+      .order-step .step-icon { font-size: 1.1rem; display: block; margin-bottom: 3px; }
+      .order-step strong { display: block; color: var(--text); font-size: 0.78rem; margin-bottom: 2px; }
+      .order-step a { color: var(--maroon); text-decoration: none; font-weight: 600; }
+      .order-step a:hover { text-decoration: underline; }
+      .order-sep { width: 1px; background: rgba(200,149,42,0.3); align-self: stretch; }
+
+      /* Footer contact links */
+      .footer-contact-links { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 3px; }
+      .footer-contact-links a {
+        font-size: 0.74rem; color: var(--maroon); text-decoration: none;
+        border: 1px solid rgba(123,30,43,0.3); border-radius: 20px;
+        padding: 2px 10px;
+      }
+      .footer-contact-links a:hover { background: var(--maroon); color: var(--cream); }
+
+      /* ============================================================
        PRINT STYLES
     ============================================================ */
       @media print {
@@ -662,17 +730,43 @@
         </div>
       </section>
 
+      <!-- ===== HOW TO ORDER ===== -->
+      <div class="order-block" role="complementary" aria-label="How to order">
+        <div class="order-block-title">🛒 &nbsp; How to Order</div>
+        <div class="order-steps">
+          <div class="order-step">
+            <span class="step-icon">💬</span>
+            <strong>WhatsApp Us</strong>
+            <a href="https://wa.me/918861266264?text=Hi+Kanchan+ji%2C+I+want+to+place+an+order.+Please+share+availability+and+delivery+charges." target="_blank" rel="noopener">Chat on WhatsApp</a>
+          </div>
+          <div class="order-sep" aria-hidden="true"></div>
+          <div class="order-step">
+            <span class="step-icon">📞</span>
+            <strong>Call Us</strong>
+            <a href="tel:+918861266264">+91 88612 66264</a>
+          </div>
+          <div class="order-sep" aria-hidden="true"></div>
+          <div class="order-step">
+            <span class="step-icon">🕐</span>
+            <strong>Lead Time</strong>
+            Made fresh on order<br />24–48 hrs notice<br />for bulk orders
+          </div>
+        </div>
+      </div>
+
       <hr class="footer-divider" />
 
       <!-- ===== FOOTER ===== -->
       <footer>
         <p class="footer-brand">Kanchan Tiwari – Home Food</p>
         <div class="footer-info">
-          <p>
-            Near Vijaya Bank Layout, Deverachikkanahalli, Bengaluru – 560076
-          </p>
-          <p>📞 <a href="tel:+918861266264">+91 88612 66264 (WhatsApp & Call)</a></p>
-          <p>🌐 <a href="https://kanchankitchen.vercel.app" target="_blank" rel="noopener">kanchankitchen.vercel.app</a></p>
+          <p><a href="https://maps.google.com/?q=Deverachikkanahalli,+Bengaluru+560076" target="_blank" rel="noopener">📍 Near Vijaya Bank Layout, Deverachikkanahalli, Bengaluru – 560076</a></p>
+          <div class="footer-contact-links">
+            <a href="tel:+918861266264">📞 Call</a>
+            <a href="https://wa.me/918861266264" target="_blank" rel="noopener">💬 WhatsApp</a>
+            <a href="https://kanchankitchen.vercel.app" target="_blank" rel="noopener">🌐 Website</a>
+            <a href="https://maps.google.com/?q=Deverachikkanahalli,+Bengaluru+560076" target="_blank" rel="noopener">📍 Maps</a>
+          </div>
         </div>
         <p class="footer-tagline">❝ Made with love, served with tradition ❞</p>
       </footer>
