@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kanchan's Kitchen | Homemade Snacks &amp; Sweets in Deverachikkanahalli, Bengaluru</title>
+    <title>Kanchan's Brahmin Kitchen | Homemade Snacks &amp; Sweets in Deverachikkanahalli, Bengaluru</title>
     <meta name="description" content="Order fresh homemade Alasi Laddus, Mawa Gujiya, Amla Pickle, Navratna Mixture &amp; more from Kanchan Tiwari's kitchen in Deverachikkanahalli, Bengaluru. Call or WhatsApp +91 88612 66264." />
     <!-- Open Graph / WhatsApp sharing -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://kanchankitchen.vercel.app/" />
-    <meta property="og:title" content="Kanchan's Kitchen | Homemade Snacks &amp; Sweets – Bengaluru" />
+    <meta property="og:title" content="Kanchan's Brahmin Kitchen | Homemade Snacks &amp; Sweets – Bengaluru" />
     <meta property="og:description" content="Pure homemade Alasi Laddus, Mawa Gujiya, Amla Pickle, Navratna Mixture &amp; more. Fresh on order. Call / WhatsApp +91 88612 66264." />
     <meta property="og:image" content="https://kanchankitchen.vercel.app/images/Alasi_laddus.jpg" />
     <meta property="og:image:width" content="800" />
@@ -16,7 +16,7 @@
     <meta property="og:locale" content="en_IN" />
     <!-- Twitter card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Kanchan's Kitchen | Homemade Sweets &amp; Snacks – Bengaluru" />
+    <meta name="twitter:title" content="Kanchan's Brahmin Kitchen | Homemade Sweets &amp; Snacks – Bengaluru" />
     <meta name="twitter:description" content="Pure homemade Alasi Laddus, Mawa Gujiya, Amla Pickle &amp; more. Fresh on order. WhatsApp +91 88612 66264." />
     <meta name="twitter:image" content="https://kanchankitchen.vercel.app/images/Alasi_laddus.jpg" />
     <style>
@@ -366,6 +366,7 @@
         gap: 3px;
         text-align: center;
       }
+      .gallery-item a { display: block; }
       .gallery-item img {
         width: 100%;
         aspect-ratio: 1 / 1;
@@ -374,6 +375,12 @@
         border: 1.5px solid var(--gold);
         box-shadow: 0 2px 6px rgba(0,0,0,0.12);
         display: block;
+        cursor: pointer;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+      }
+      .gallery-item a:hover img {
+        transform: scale(1.04);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.22);
       }
       .gallery-item .g-name {
         font-size: 0.6rem;
@@ -607,8 +614,8 @@
       <!-- ===== HEADER ===== -->
       <header>
         <span class="header-ornament">❖ ❖ ❖</span>
-        <h1>Kanchan's Kitchen</h1>
-        <p class="tagline">Pure Homemade &nbsp;|&nbsp; Freshly Prepared</p>
+        <h1>Kanchan's Brahmin Kitchen</h1>
+        <p class="tagline">Pure Homemade &nbsp;|&nbsp; Freshly Prepared &nbsp;|&nbsp; Pure Vegetarian</p>
       </header>
 
       <div class="kannada-btn-wrap">
@@ -691,43 +698,43 @@
         <div class="gallery-grid">
 
           <div class="gallery-item">
-            <img src="images/Alasi_laddus.jpg" alt="Alasi Laddus" loading="lazy" />
+            <a href="alasi-laddus.html"><img src="images/Alasi_laddus.jpg" alt="Alasi Laddus" loading="lazy" /></a>
             <span class="g-name">Alasi Laddus</span>
             <span class="g-price">₹ 400 / kg</span>
           </div>
 
           <div class="gallery-item">
-            <img src="images/mava_gujiya.jpg" alt="Mawa Gujiya" loading="lazy" />
+            <a href="mawa-gujiya.html"><img src="images/mava_gujiya.jpg" alt="Mawa Gujiya" loading="lazy" /></a>
             <span class="g-name">Mawa Gujiya</span>
             <span class="g-price">₹ 500 / 500g</span>
           </div>
 
           <div class="gallery-item">
-            <img src="images/Amla_pickle.jpg" alt="Amla Pickle" loading="lazy" />
+            <a href="amla-pickle.html"><img src="images/Amla_pickle.jpg" alt="Amla Pickle" loading="lazy" /></a>
             <span class="g-name">Amla Pickle</span>
             <span class="g-price">₹ 300 / 500g</span>
           </div>
 
           <div class="gallery-item">
-            <img src="images/navaratan_mixture.jpg" alt="Navratna Mixture" loading="lazy" />
+            <a href="navratna-mixture.html"><img src="images/navaratan_mixture.jpg" alt="Navratna Mixture" loading="lazy" /></a>
             <span class="g-name">Navratna Mixture</span>
             <span class="g-price">₹ 60 / 100g</span>
           </div>
 
           <div class="gallery-item">
-            <img src="images/Moong_daal.jpg" alt="Moong Dal Mixture" loading="lazy" />
+            <a href="moong-dal-mixture.html"><img src="images/Moong_daal.jpg" alt="Moong Dal Mixture" loading="lazy" /></a>
             <span class="g-name">Moong Dal Mix</span>
             <span class="g-price">₹ 45 / 100g</span>
           </div>
 
           <div class="gallery-item">
-            <img src="images/namak_para.jpg" alt="Namak Para" loading="lazy" />
+            <a href="namak-para.html"><img src="images/namak_para.jpg" alt="Namak Para" loading="lazy" /></a>
             <span class="g-name">Namak Para</span>
             <span class="g-price">₹ 65 / 200g</span>
           </div>
 
           <div class="gallery-item">
-            <img src="images/shakar_para.jpg" alt="Shakkarpara" loading="lazy" />
+            <a href="shakkarpara.html"><img src="images/shakar_para.jpg" alt="Shakkarpara" loading="lazy" /></a>
             <span class="g-name">Shakkarpara</span>
             <span class="g-price">₹ 75 / 200g</span>
           </div>
@@ -775,7 +782,8 @@
           </div>
           <p class="footer-contact-text">📞 +91 88612 66264 &nbsp;|&nbsp; 🌐 kanchankitchen.vercel.app</p>
         </div>
-        <p class="footer-tagline">❝ Made with love, served with tradition ❞</p>
+        <p class="footer-tagline">Made with love, served with tradition</p>
+        <p class="footer-tagline">Pure vegetarian brahmin kitchen</p>
       </footer>
     </div>
     <!-- /.page -->

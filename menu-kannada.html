@@ -4,6 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ಕಾಂಚನ ತಿವಾರಿ – ಶುದ್ಧ ಮನೆಯ ಅಡುಗೆ</title>
+  <meta name="description" content="ಕಾಂಚನ ತಿವಾರಿ ಅವರ ಮನೆಯ ಅಡುಗೆ – ಆಲಸಿ ಲಡ್ಡು, ಮಾವಾ ಗುಜಿಯಾ, ಆಮ್ಲಾ ಉಪ್ಪಿನಕಾಯಿ, ನವರತ್ನ ಮಿಶ್ರಣ ಮತ್ತು ಇನ್ನಷ್ಟು. ಆರ್ಡರ್ ಮಾಡಲು +91 88612 66264." />
+  <!-- Open Graph / WhatsApp sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kanchankitchen.vercel.app/menu-kannada.html" />
+  <meta property="og:title" content="ಕಾಂಚನ ತಿವಾರಿ – ಶುದ್ಧ ಮನೆಯ ಅಡುಗೆ" />
+  <meta property="og:description" content="ಆಲಸಿ ಲಡ್ಡು, ಮಾವಾ ಗುಜಿಯಾ, ಆಮ್ಲಾ ಉಪ್ಪಿನಕಾಯಿ ಮತ್ತು ಇನ್ನಷ್ಟು. ತಾಜಾ ತಯಾರಿ. WhatsApp +91 88612 66264." />
+  <meta property="og:image" content="https://kanchankitchen.vercel.app/images/Alasi_laddus.jpg" />
+  <meta property="og:image:width" content="800" />
+  <meta property="og:image:height" content="800" />
+  <meta property="og:locale" content="kn_IN" />
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ಕಾಂಚನ ತಿವಾರಿ – ಶುದ್ಧ ಮನೆಯ ಅಡುಗೆ" />
+  <meta name="twitter:description" content="ಆಲಸಿ ಲಡ್ಡು, ಮಾವಾ ಗುಜಿಯಾ, ಆಮ್ಲಾ ಉಪ್ಪಿನಕಾಯಿ ಮತ್ತು ಇನ್ನಷ್ಟು. WhatsApp +91 88612 66264." />
+  <meta name="twitter:image" content="https://kanchankitchen.vercel.app/images/Alasi_laddus.jpg" />
   <style>
     :root {
       --maroon: #7B1E2B; --maroon-dark: #5A1420;
@@ -71,7 +86,7 @@
     /* Menu grid */
     .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; margin-top: 3mm; }
     .section-sweets { grid-column: 1 / -1; }
-    .menu-section { border: 1.5px solid var(--border); border-radius: 4px; background: var(--cream-dark); overflow: hidden; }
+    .menu-section { border: 1.5px solid var(--border); border-radius: 4px; background: var(--cream-dark); overflow: hidden; position: relative; }
     .menu-section::before { content: ''; display: block; height: 4px; background: linear-gradient(90deg, var(--maroon), var(--gold), var(--maroon)); }
     .section-title { background: var(--maroon); color: var(--gold-light); text-align: center; padding: 4px 0; font-size: 0.82rem; letter-spacing: 0.12em; }
     .section-items { list-style: none; padding: 5px 10px 8px; }
@@ -92,7 +107,9 @@
     .gallery-heading::before, .gallery-heading::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
     .gallery-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4mm; overflow: hidden; }
     .gallery-item { display: flex; flex-direction: column; align-items: center; gap: 3px; text-align: center; }
-    .gallery-item img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px; border: 1.5px solid var(--gold); box-shadow: 0 2px 6px rgba(0,0,0,0.12); display: block; }
+    .gallery-item a { display: block; }
+    .gallery-item img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px; border: 1.5px solid var(--gold); box-shadow: 0 2px 6px rgba(0,0,0,0.12); display: block; cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+    .gallery-item a:hover img { transform: scale(1.04); box-shadow: 0 4px 12px rgba(0,0,0,0.22); }
     .g-name { font-size: 0.6rem; color: var(--text); line-height: 1.3; font-weight: 600; }
     .g-price { font-size: 0.6rem; color: var(--maroon); font-weight: bold; }
 
@@ -125,7 +142,8 @@
     @media print {
       @page { size: A4 portrait; margin: 0; }
       body { background: white; padding: 0; display: block; }
-      .page { width: 210mm; min-height: 297mm; padding: 20mm; box-shadow: none; margin: 0 auto; }
+      .page { width: 210mm; min-height: 297mm; padding: 20mm; box-shadow: none; margin: 0 auto; page-break-after: avoid; }
+      .menu-section { break-inside: avoid; }
       .top-nav { display: none; }
       a { color: inherit !important; text-decoration: none; }
       /* Show plain text contact info in print, hide pill buttons */
@@ -140,6 +158,7 @@
       .menu-grid { grid-template-columns: 1fr; }
       .section-sweets { grid-column: 1; }
       .gallery-grid { grid-template-columns: repeat(4, 1fr); gap: 2.5mm; }
+      .gallery-item .g-name, .gallery-item .g-price { font-size: 0.55rem; }
     }
     @media screen and (max-width: 380px) {
       .gallery-grid { grid-template-columns: repeat(3, 1fr); }
@@ -164,8 +183,8 @@
 
   <header>
     <span class="header-ornament">❖ ❖ ❖</span>
-    <h1>ಕಾಂಚನ್ ಅಡುಗೆಮನೆ</h1>
-    <p class="tagline">ಶುದ್ಧ ಮನೆಯ ಅಡುಗೆ &nbsp;|&nbsp; ತಾಜಾ ತಯಾರಿ</p>
+    <h1>ಕಾಂಚನ್ ಬ್ರಾಹ್ಮಣ ಅಡುಗೆಮನೆ</h1>
+    <p class="tagline">ಶುದ್ಧ ಮನೆಯ ಅಡುಗೆ &nbsp;|&nbsp; ತಾಜಾ ತಯಾರಿ &nbsp;|&nbsp; ಶುದ್ಧ ಸಸ್ಯಾಹಾರಿ</p>
   </header>
 
   <div class="divider" aria-hidden="true"><span>✦</span></div>
@@ -237,13 +256,13 @@
   <section class="gallery-section" aria-label="ಉತ್ಪನ್ನಗಳ ಫೋಟೋ">
     <div class="gallery-heading">✦ &nbsp; ನಮ್ಮ ಉತ್ಪನ್ನಗಳು &nbsp; ✦</div>
     <div class="gallery-grid">
-      <div class="gallery-item"><img src="images/Alasi_laddus.jpg" alt="ಆಲಸಿ ಲಡ್ಡು" /><span class="g-name">ಆಲಸಿ ಲಡ್ಡು</span><span class="g-price">₹ 400/ಕೆಜಿ</span></div>
-      <div class="gallery-item"><img src="images/mava_gujiya.jpg" alt="ಮಾವಾ ಗುಜಿಯಾ" /><span class="g-name">ಮಾವಾ ಗುಜಿಯಾ</span><span class="g-price">₹ 500/500ಗ್ರಾಂ</span></div>
-      <div class="gallery-item"><img src="images/Amla_pickle.jpg" alt="ಆಮ್ಲಾ ಉಪ್ಪಿನಕಾಯಿ" /><span class="g-name">ಆಮ್ಲಾ ಉಪ್ಪಿನಕಾಯಿ</span><span class="g-price">₹ 300/500ಗ್ರಾಂ</span></div>
-      <div class="gallery-item"><img src="images/navaratan_mixture.jpg" alt="ನವರತ್ನ ಮಿಶ್ರಣ" /><span class="g-name">ನವರತ್ನ ಮಿಶ್ರಣ</span><span class="g-price">₹ 60/100ಗ್ರಾಂ</span></div>
-      <div class="gallery-item"><img src="images/Moong_daal.jpg" alt="ಹೆಸರುಬೇಳೆ ಮಿಶ್ರಣ" /><span class="g-name">ಹೆಸರುಬೇಳೆ ಮಿಶ್ರಣ</span><span class="g-price">₹ 45/100ಗ್ರಾಂ</span></div>
-      <div class="gallery-item"><img src="images/namak_para.jpg" alt="ನಮಕ್ ಪಾರಾ" /><span class="g-name">ನಮಕ್ ಪಾರಾ</span><span class="g-price">₹ 65/200ಗ್ರಾಂ</span></div>
-      <div class="gallery-item"><img src="images/shakar_para.jpg" alt="ಶಕ್ಕರ್ ಪಾರಾ" /><span class="g-name">ಶಕ್ಕರ್ ಪಾರಾ</span><span class="g-price">₹ 75/200ಗ್ರಾಂ</span></div>
+      <div class="gallery-item"><a href="alasi-laddus.html"><img src="images/Alasi_laddus.jpg" alt="ಆಲಸಿ ಲಡ್ಡು" loading="lazy" /></a><span class="g-name">ಆಲಸಿ ಲಡ್ಡು</span><span class="g-price">₹ 400/ಕೆಜಿ</span></div>
+      <div class="gallery-item"><a href="mawa-gujiya.html"><img src="images/mava_gujiya.jpg" alt="ಮಾವಾ ಗುಜಿಯಾ" loading="lazy" /></a><span class="g-name">ಮಾವಾ ಗುಜಿಯಾ</span><span class="g-price">₹ 500/500ಗ್ರಾಂ</span></div>
+      <div class="gallery-item"><a href="amla-pickle.html"><img src="images/Amla_pickle.jpg" alt="ಆಮ್ಲಾ ಉಪ್ಪಿನಕಾಯಿ" loading="lazy" /></a><span class="g-name">ಆಮ್ಲಾ ಉಪ್ಪಿನಕಾಯಿ</span><span class="g-price">₹ 300/500ಗ್ರಾಂ</span></div>
+      <div class="gallery-item"><a href="navratna-mixture.html"><img src="images/navaratan_mixture.jpg" alt="ನವರತ್ನ ಮಿಶ್ರಣ" loading="lazy" /></a><span class="g-name">ನವರತ್ನ ಮಿಶ್ರಣ</span><span class="g-price">₹ 60/100ಗ್ರಾಂ</span></div>
+      <div class="gallery-item"><a href="moong-dal-mixture.html"><img src="images/Moong_daal.jpg" alt="ಹೆಸರುಬೇಳೆ ಮಿಶ್ರಣ" loading="lazy" /></a><span class="g-name">ಹೆಸರುಬೇಳೆ ಮಿಶ್ರಣ</span><span class="g-price">₹ 45/100ಗ್ರಾಂ</span></div>
+      <div class="gallery-item"><a href="namak-para.html"><img src="images/namak_para.jpg" alt="ನಮಕ್ ಪಾರಾ" loading="lazy" /></a><span class="g-name">ನಮಕ್ ಪಾರಾ</span><span class="g-price">₹ 65/200ಗ್ರಾಂ</span></div>
+      <div class="gallery-item"><a href="shakkarpara.html"><img src="images/shakar_para.jpg" alt="ಶಕ್ಕರ್ ಪಾರಾ" loading="lazy" /></a><span class="g-name">ಶಕ್ಕರ್ ಪಾರಾ</span><span class="g-price">₹ 75/200ಗ್ರಾಂ</span></div>
     </div>
   </section>
 
@@ -287,6 +306,7 @@
       <p class="footer-contact-text">📞 +91 88612 66264 &nbsp;|&nbsp; 🌐 kanchankitchen.vercel.app</p>
     </div>
     <p class="footer-tagline">❝ ಪ್ರೀತಿಯಿಂದ ಮಾಡಿದ, ಸಂಪ್ರದಾಯದೊಂದಿಗೆ ಬಡಿಸಿದ ❞</p>
+    <p class="footer-tagline">ಶುದ್ಧ ಸಸ್ಯಾಹಾರಿ ಬ್ರಾಹ್ಮಣ ಅಡುಗೆ</p>
   </footer>
 </div>
 </body>
